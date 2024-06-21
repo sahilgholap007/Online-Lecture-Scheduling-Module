@@ -23,6 +23,7 @@ const AddLectureForm = () => {
   };
 
   const fetchInstructors = async () => {
+    
     try {
       const response = await api.get('/instructors');
       setInstructors(response.data);
@@ -31,7 +32,8 @@ const AddLectureForm = () => {
     }
   };
 
-  const handleAddLecture = async () => {
+  const handleAddLecture = async (e) => {
+    e.preventDefault();
     if (!selectedCourse || !selectedInstructor || !selectedDate) {
       alert('Please select a course, instructor, and date for the lecture.');
       return;
