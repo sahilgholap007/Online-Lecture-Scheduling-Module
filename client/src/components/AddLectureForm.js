@@ -23,7 +23,6 @@ const AddLectureForm = () => {
   };
 
   const fetchInstructors = async () => {
-    
     try {
       const response = await api.get('/instructors');
       setInstructors(response.data);
@@ -40,10 +39,17 @@ const AddLectureForm = () => {
     }
 
     try {
+      // Check if the instructor is already assigned a lecture on the selected date
+      const response = await api.get(`/lectures?instructor=${selectedInstructor}&date=${selectedDate}`);
+      if (response.data.length > 0) {
+        alert('This instructor is already assigned to another lecture on the selected date.');
+        return;
+      }
+
       const lectureData = {
         course: selectedCourse,
         instructor: selectedInstructor,
-        date: selectedDate
+        date: selectedDate,
       };
 
       await api.post('/lectures', lectureData);

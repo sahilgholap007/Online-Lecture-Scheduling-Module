@@ -65,26 +65,26 @@ const LoginForm = ({ url }) => {
       <div className="min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex items-center justify-center">
         <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-8">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
-            Welcome, {instructor.name}
+            Welcome, {instructor?.name}
           </h2>
           <p className="text-gray-700 text-lg text-center mb-4">
-            Email: {instructor.email}
+            Email: {instructor?.email}
           </p>
-          {lectures.length > 0 && (
+          {lectures?.length > 0 && (
             <div className="mt-4">
               <h3 className="text-xl font-semibold text-gray-700 mb-2">
                 Upcoming Lectures:
               </h3>
               <ul className="list-disc pl-6">
                 {lectures
-                  .filter((lecture) => instructor._id === lecture.instructor._id)
+                  ?.filter((lecture) => instructor?._id === lecture?.instructor?._id)
                   .map((lecture) => (
                     <li
-                      key={lecture._id}
+                      key={lecture?._id}
                       className="text-gray-600 text-lg"
                     >
-                      {lecture.course.name} on{" "}
-                      {new Date(lecture.date).toDateString()}
+                      {lecture?.course.name} on{" "}
+                      {new Date(lecture?.date).toDateString()}
                     </li>
                   ))}
               </ul>
