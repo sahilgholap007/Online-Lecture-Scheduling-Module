@@ -40,13 +40,13 @@ const InstructorsList = () => {
           <li key={instructor._id} className="border-b border-gray-300 py-2">
             <div className="flex justify-between items-center max-sm:flex-col max-sm:items-start gap-2">
               <div>
-                <p className="text-lg font-semibold">{instructor.name}</p>
-                <p className="text-gray-600">{instructor.email}</p>
+                <p className="text-lg font-semibold">{instructor?.name}</p>
+                <p className="text-gray-600">{instructor?.email}</p>
               </div>
-              <p className="text-gray-500">ID: {instructor._id}</p>
+              <p className="text-gray-500">ID: {instructor?._id}</p>
               <button
                 className="text-white p-2 bg-[#ff3939]"
-                onClick={() => deleteInstructor(instructor._id)}
+                onClick={() => deleteInstructor(instructor?._id)}
               >
                 Delete
               </button>
