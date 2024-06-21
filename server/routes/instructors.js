@@ -1,4 +1,3 @@
-// routes/instructors.js
 const express = require('express');
 const router = express.Router();
 const Instructor = require('../models/Instructor');
@@ -43,6 +42,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Get all instructors
 router.get('/', async (req, res) => {
   try {
     const instructors = await Instructor.find().populate('lectures');
@@ -52,11 +52,12 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Get lectures by instructor ID
 router.get('/:instructorId/lectures', async (req, res) => {
   const { instructorId } = req.params;
 
   try {
-    const lectures = await Lectureecture.find({ instructor: instructorId }).populate('course');
+    const lectures = await Lecture.find({ instructor: instructorId }).populate('course');
     res.status(200).send({ success: true, lectures });
   } catch (error) {
     res.status(500).send({ success: false, message: 'Server error' });

@@ -18,7 +18,7 @@ const AddInstructorsForm = () => {
     }
 
     try {
-      const response = await axios.post(`${api}/instructors`, {
+      const response = await api.post('/instructors', {
         name,
         email,
         password,
