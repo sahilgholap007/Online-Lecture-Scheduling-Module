@@ -1,30 +1,30 @@
-// server.js
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 const instructors = require('./routes/instructors');
 const courses = require('./routes/courses');
 const lectures = require('./routes/lectures');
 
 const app = express();
+dotenv.config();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-mongoose.connect('mongodb+srv://gholapsahil007:c4fazNCRRGwu6sZH@lecturescheduling.dpyr1dt.mongodb.net/?retryWrites=true&w=majority&appName=LectureScheduling', {
-    useNewUrlParser: true,
-}
-).then(() => {
-    console.log('Connected to database!');
-}).catch(() => {
-    console.log('Connection failed!');
-}
-);
+const PORT = process.env.PORT || 5000;
+const MONGODB_URL = process.env.MONGO_URI;
 
-app.listen(3001, () => {
-    console.log('Server started!');
+console.log('MONGODB_URL:', MONGODB_URL); // Debugging output
+
+mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log(err));
+
+app.listen(PORT, () => {
+    console.log(`Server is running on PORT ${PORT}`);
 });
 
 app.use('/api/instructors', instructors);
