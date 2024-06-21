@@ -65,4 +65,17 @@ router.get('/:instructorId/lectures', async (req, res) => {
   }
 });
 
+// Delete an instructor
+router.delete('/:instructorId', async (req, res) => {
+  const { instructorId } = req.params;
+
+  try {
+    await Instructor.findByIdAndDelete(instructorId);
+    res.status(200).send({ success: true });
+  } catch (error) {
+    res.status(500).send({ success: false, message: 'Server error' });
+    console.error('Failed to delete instructor:', error);
+  }
+});
+
 module.exports = router;
