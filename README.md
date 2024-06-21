@@ -32,5 +32,9 @@ Lectures
 - GET /api/lectures/:id: Retrieve details of a specific lecture
 - POST /api/lectures: Add a new lecture
 
+Create .env file in server
+- PORT=5000
+- MONGODB_URI=mongodb://localhost:27017/yourDatabaseName
+
 
 
