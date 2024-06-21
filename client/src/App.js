@@ -5,7 +5,7 @@ import AdminPanel from "./components/AdminPanel";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
-const API_BASE_URL = "http://localhost:3001/api";
+const API_BASE_URL = "http://localhost:5000/api";
 
 const App = () => {
   return (

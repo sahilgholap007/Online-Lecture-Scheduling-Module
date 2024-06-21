@@ -27,6 +27,11 @@ app.listen(PORT, () => {
     console.log(`Server is running on PORT ${PORT}`);
 });
 
+app.get('/api/port', (req, res) => {
+    res.json({ port: PORT });
+  });
+  
+
 app.use('/api/instructors', instructors);
 app.use('/api/courses', courses);
 app.use('/api/lectures', lectures);
