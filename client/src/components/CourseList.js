@@ -42,10 +42,10 @@ const CoursesList = () => {
               <p className="text-gray-700 font-semibold mb-2">Lectures:</p>
               <ul className="ml-4">
                 {lectures
-                  .filter((lecture) => lecture.course._id === course._id)
+                  .filter((lecture) => lecture.course?._id === course._id)
                   .map((lecture) => (
-                    <li key={lecture._id} className="text-sm text-gray-600">
-                      {new Date(lecture.date).toLocaleDateString()} - {lecture.title}
+                    <li key={lecture?._id} className="text-sm text-gray-600">
+                      {new Date(lecture.date).toLocaleDateString()} - {lecture.instructor?.name}
                     </li>
                   ))}
               </ul>
