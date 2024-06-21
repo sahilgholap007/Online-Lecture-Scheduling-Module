@@ -59,7 +59,7 @@ const AddLectureForm = () => {
       if (error.response && error.response.data && error.response.data.message) {
         alert(error.response.data.message);
       } else {
-        alert('Failed to add lecture. Please try again.');
+        alert('Date conflict: Instructor is already assigned to another lecture on this date. Please select a different date.');
       }
     }
   };
