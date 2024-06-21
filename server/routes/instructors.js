@@ -4,6 +4,20 @@ const router = express.Router();
 const Instructor = require('../models/Instructor');
 const Lecture = require('../models/Lecture');
 
+// Add an instructor
+router.post('/', async (req, res) => {
+  const { name, email, password } = req.body;
+
+  try {
+    const instructor = new Instructor({ name, email, password });
+    await instructor.save();
+    res.status(201).send({ success: true, instructor });
+  } catch (error) {
+    res.status(500).send({ success: false, message: 'Server error' });
+    console.error('Failed to add instructor:', error);
+  }
+});
+
 // Login an instructor
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;

@@ -33,7 +33,7 @@ const CoursesList = () => {
       <h2 className="text-3xl font-bold mb-6 text-center">Courses List</h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {courses.map((course) => (
-          <div key={course._id} className="border border-gray-300 rounded-lg overflow-hidden">
+          <div key={course._id} className="border border-gray-300 rounded-lg overflow-hidden shadow-md hover:shadow-lg bg-white bg-opacity-40 backdrop-filter backdrop-blur-md">
             <img src={course.image} alt="Course" className="h-48 w-full object-cover" />
             <div className="p-4">
               <p className="text-xl font-semibold mb-2">{course.name}</p>

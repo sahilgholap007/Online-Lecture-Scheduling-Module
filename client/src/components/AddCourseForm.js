@@ -24,7 +24,7 @@ const AddCourseForm = () => {
   };
 
   return (
-    <div className="max-w-md mt-8 p-6 bg-white rounded-lg shadow-lg flex-1">
+    <div className="max-w-md mt-8 p-6 bg-white rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-4">Add Course</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

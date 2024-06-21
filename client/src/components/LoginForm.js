@@ -49,21 +49,42 @@ const LoginForm = ({ url }) => {
     }
   };
 
+  const admin = async (e) => {
+    e.preventDefault();
+    const adminPassword = prompt("Enter admin password:");
+
+    // Check if the admin password matches a predefined value
+    if (adminPassword === "admin123") {
+      window.location.href = "/admin"; // Redirect to admin panel
+    } else {
+      alert("Incorrect admin password. Please try again.");
+    }
+  };
   if (loggedIn) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="max-w-xl mx-auto bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-3xl font-bold mb-6 text-center">Welcome, {instructor.name}</h2>
-          <p className="text-gray-700 text-lg text-center mb-4">Email: {instructor.email}</p>
+      <div className="min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex items-center justify-center">
+        <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-8">
+          <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
+            Welcome, {instructor.name}
+          </h2>
+          <p className="text-gray-700 text-lg text-center mb-4">
+            Email: {instructor.email}
+          </p>
           {lectures.length > 0 && (
             <div className="mt-4">
-              <h3 className="text-xl font-semibold text-gray-700 mb-2">Upcoming Lectures:</h3>
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                Upcoming Lectures:
+              </h3>
               <ul className="list-disc pl-6">
                 {lectures
                   .filter((lecture) => instructor._id === lecture.instructor._id)
                   .map((lecture) => (
-                    <li key={lecture._id} className="text-gray-600 text-lg">
-                      {lecture.course.name} on {new Date(lecture.date).toDateString()}
+                    <li
+                      key={lecture._id}
+                      className="text-gray-600 text-lg"
+                    >
+                      {lecture.course.name} on{" "}
+                      {new Date(lecture.date).toDateString()}
                     </li>
                   ))}
               </ul>
@@ -88,12 +109,17 @@ const LoginForm = ({ url }) => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-3xl font-bold mb-6 text-center">Instructor's Login</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-400 to-blue-500">
+      <div className="max-w-md w-full bg-white bg-opacity-90 rounded-lg shadow-lg p-8">
+        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
+          Instructor's Login
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
-            <label htmlFor="email" className="block text-lg font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="block text-lg font-medium text-gray-700"
+            >
               Email:
             </label>
             <input
@@ -106,7 +132,10 @@ const LoginForm = ({ url }) => {
             />
           </div>
           <div className="mb-6">
-            <label htmlFor="password" className="block text-lg font-medium text-gray-700">
+            <label
+              htmlFor="password"
+              className="block text-lg font-medium text-gray-700"
+            >
               Password:
             </label>
             <input
@@ -118,12 +147,22 @@ const LoginForm = ({ url }) => {
               required
             />
           </div>
-          {error && <div className="text-red-600 mb-4 text-center text-lg">{error}</div>}
+          {error && (
+            <div className="text-red-600 mb-4 text-center text-lg">
+              Invalid Credentials. Please try Again
+            </div>
+          )}
           <button
             type="submit"
             className="w-full py-3 px-6 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700 text-lg"
           >
             Login
+          </button>
+          <button
+            onClick={admin}
+            className="w-full py-3 px-6 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700 text-lg mt-5">
+
+            Login as Admin
           </button>
         </form>
       </div>
