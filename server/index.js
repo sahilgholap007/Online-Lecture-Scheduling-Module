@@ -11,10 +11,9 @@ const lectures = require('./routes/lectures');
 const app = express();
 dotenv.config();
 app.use(cors({
-  origin: ['http://localhost:5001', 'https://lectureschedulingmodule-cv9ubj3ma-sahil-gholaps-projects.vercel.app'],
+  origin: 'https://lectureschedulingmodule-449g6o6gf-sahil-gholaps-projects.vercel.app', // Allow requests from this origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true, // Allow cookies if needed
-  optionsSuccessStatus: 204 // Some legacy browsers choke on 204
+  credentials: true, // Allow sending cookies
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
