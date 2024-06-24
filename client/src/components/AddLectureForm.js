@@ -43,8 +43,6 @@ const AddLectureForm = () => {
         lectures
       };
 
-      console.log('Sending lecture data:', lectureData); // Log the data being sent
-
       await api.post('/lectures', lectureData);
 
       // Notify user and reset form after successful addition
